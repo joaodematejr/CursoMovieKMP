@@ -66,6 +66,26 @@ in your IDE's toolbar or run it directly from the terminal:
 To build and run the development version of the iOS app, use the run configuration from the run widget
 in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
 
+### Continuous Integration
+
+This repository includes a GitHub Actions workflow at [
+`.github/workflows/ci.yml`](./.github/workflows/ci.yml).
+
+The workflow runs on every `push`, `pull_request`, and manual trigger, and validates the project on
+Linux with:
+
+- Gradle wrapper validation
+- JDK 21 setup with Gradle caching
+- Android SDK installation for API 36
+- `./gradlew :composeApp:check :composeApp:assembleDebug`
+- Upload of build reports and the generated Android debug APK as workflow artifacts
+
+At the moment, the CI focuses on the Linux-compatible checks for Android, JVM, JS, Wasm, and shared
+tests.
+The iOS app is still built from Xcode/macOS because the current Kotlin targets only declare
+`iosArm64()` and
+`iosSimulatorArm64()` in [`composeApp/build.gradle.kts`](./composeApp/build.gradle.kts).
+
 ---
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
