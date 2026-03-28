@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.com.demate.navigation.AppRoutes
+import br.com.demate.ui.movies.MoviesListRoute
 
 
 @Composable
@@ -17,7 +18,7 @@ fun App() {
         val navController = rememberNavController()
         NavHost(navController, startDestination = AppRoutes.MoviesList) {
             composable<AppRoutes.MoviesList> {
-                Text("Movie List")
+                MoviesListRoute()
             }
             composable<AppRoutes.MovieDetail> {
                 Text("Movie Detail")
