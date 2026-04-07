@@ -14,12 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import br.com.demate.domain.model.Movie
 import cursomoviekmp.composeapp.generated.resources.Res
 import cursomoviekmp.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun MoviePoster(modifier: Modifier = Modifier) {
+fun MoviePoster(modifier: Modifier = Modifier, movie: Movie) {
     Column(
         modifier = modifier.width(140.dp)
     ) {
@@ -36,7 +37,7 @@ fun MoviePoster(modifier: Modifier = Modifier) {
         }
 
         Text(
-            text = "Movie Title",
+            text = movie.title,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.titleMedium
